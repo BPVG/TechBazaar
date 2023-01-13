@@ -48,6 +48,7 @@
 </style>
 </head>
 <body>
+
   <div class="side-menu-wrapper" {% if show_menu %}style="display:block;"{% else %}style="display:none;"{% endif %}>
     <div id="side-menu">
       <ul>
@@ -59,46 +60,15 @@
     </div>
   </div>
   
-
   <div class="grid-container">
-    <div class="grid-item">
-      <img src="image1.jpg" alt="image1">
-      <p>Item 1</p>
-    </div>
-    <div class="grid-item">
-      <img src="image2.jpg" alt="image2">
-      <p>Item 2</p>
-    </div>
-    <div class="grid-item">
-      <img src="image3.jpg" alt="image3">
-      <p>Item 3</p>
-    </div>
-    <div class="grid-item">
-      <img src="image4.jpg" alt="image4">
-      <p>Item 4</p>
-    </div>
-    <div class="grid-item">
-      <img src="image5.jpg" alt="image5">
-      <p>Item 5</p>
-    </div>
-    <div class="grid-item">
-      <img src="image6.jpg" alt="image6">
-      <p>Item 6</p>
-    </div>
-    <div class="grid-item">
-      <img src="image7.jpg" alt="image7">
-      <p>Item 7</p>
-    </div>
-    <div class="grid-item">
-      <img src="image8.jpg" alt="image8">
-      <p>Item 8</p>
-    </div>
-    <div class="grid-item">
-      <img src="image9.jpg" alt="image9">
-      <p>Item 9</p>
-    </div>
-  </div>
-      
+    {% for object in object_list %}
+        <div class="grid-cell">
+            <p>{{ object.name }}</p>
+            <p>{{ object.description }}</p>
+            <img src="{{ object.image.url }}" alt="{{ object.name }}" class="image">
+        </div>
+    {% endfor %}
+</div>      
 
 </body>
 </html>

@@ -2,8 +2,16 @@
 <html>
 <body>
 
-<h1>Hello World!</h1>
-<p>Welcome to my first Django project!</p>
+<div class="side-menu-wrapper" {% if show_menu %}style="display:block;"{% else %}style="display:none;"{% endif %}>
+    <div id="side-menu">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
 
 </body>
 </html>
