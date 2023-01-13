@@ -63,9 +63,9 @@
   <div class="grid-container">
     {% for object in object_list %}
         <div class="grid-cell">
-            <p>{{ object.name }}</p>
-            <p>{{ object.description }}</p>
-            <img src="{{ object.image.url }}" alt="{{ object.name }}" class="image">
+            <p>{{ object.listingname }}</p>
+            <p>{{ object.price }}</p>
+            <img src="{{ object.listingimage.url }}" alt="{{ object.name }}" class="image">
         </div>
     {% endfor %}
 </div>      

@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 from PIL import Image
+from djmoney.models.fields import MoneyField
 
 
 def validate_image(image):
