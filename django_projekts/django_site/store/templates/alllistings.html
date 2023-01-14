@@ -63,7 +63,7 @@
   <div class="grid-container">
     {% for object in object_list %}
         <div class="grid-cell">
-            <img src="{{ object.listingimage.url }}" alt="{{ object.name }}" class="image">
+          <img src="{{ object.listingimage.url }}" alt="{{ object.listingname }}" class="image">
             <p>{{ object.listingname }}</p>
             <p>{{ object.price }}</p>
         </div>

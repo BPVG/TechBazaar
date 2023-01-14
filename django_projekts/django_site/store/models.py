@@ -14,10 +14,8 @@ class User(models.Model):
     lastname = models.CharField(max_length=255)
 
 class Listing(models.Model):
-  listingname = models.CharField(max_length=255, default='', blank=True)
-  description = models.TextField(max_length=255, default='', blank=True)
-  location = models.CharField(max_length=255, default='', blank=True)
+  listingname = models.CharField(max_length=255)
+  description = models.TextField(max_length=2000, default="Nav apraksta")
   listingimage = models.ImageField(upload_to='images/', validators=[validate_image], default='images/default.png')
   price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
-  listingowner = models.ForeignKey(User, on_delete=models.CASCADE, default='', blank=True)
   statuscompleted = models.BooleanField(default=False)
