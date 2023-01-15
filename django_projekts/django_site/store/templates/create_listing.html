@@ -2,10 +2,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');</style>
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
     <script src="{% static 'js/sidebar.js' %}"></script>
 </head>
-<body>
+<body class="main">
     {% include 'sidebar.html' %}
     <div>
         <form method="post" enctype="multipart/form-data" action="{% url 'store:create_listing' %}">
