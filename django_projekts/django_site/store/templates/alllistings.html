@@ -1,74 +1,22 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  grid-gap: 10px;
-}
-
-.grid-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#side-menu {
-    width: 200px; /* Width of the menu */
-    position: fixed; /* Make the menu fixed to the page */
-    top: 50%; /* Position the menu vertically */
-    transform: translateY(-50%);
-    left: 0; /* Position the menu horizontally */
-    background: #f1f1f1; /* Background color of the menu */
-    padding: 20px; /* Padding for the menu items */
-    box-shadow: 3px 3px 6px rgba(0,0,0,0.16), 3px 3px 6px rgba(0,0,0,0.23); /* Add a shadow to the menu */
-}
-
-#side-menu ul {
-    list-style-type: none; /* Remove bullet points from the list */
-    margin: 0; /* Remove margins from the list */
-    padding: 0; /* Remove padding from the list */
-}
-
-#side-menu li {
-    margin: 10px 0; /* Add some margin between the list items */
-}
-
-#side-menu a {
-    color: #555; /* Color of the menu links */
-    text-decoration: none; /* Remove underline from the links */
-    font-size: 16px; /* Font size of the links */
-}
-
-#side-menu a:hover {
-    color: #000; /* Change link color on hover */
-}
-</style>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+  <script src="{% static 'js/sidebar.js' %}"></script>
 </head>
 <body>
-
-  <div class="side-menu-wrapper" {% if show_menu %}style="display:block;"{% else %}style="display:none;"{% endif %}>
-    <div id="side-menu">
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </div>
-  
+  {% include 'sidebar.html' %}
   <div class="grid-container">
     {% for object in object_list %}
         <div class="grid-cell">
-          <img src="{{ object.listingimage.url }}" alt="{{ object.listingname }}" class="image">
-            <p>{{ object.listingname }}</p>
-            <p>{{ object.price }}</p>
+          <a href="{% url 'listing_detail' listing.pk %}">
+            <img src="{{ listing.listingimage.url }}" alt="{{ listing.listingname }}" class="image">
+            <p>{{ listing.listingname }}</p>
+            <p>{{ listing.price }}</p>
+        </a>
         </div>
     {% endfor %}
 </div>      
-
 </body>
 </html>

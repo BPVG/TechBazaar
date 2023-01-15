@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <script src="{% static 'js/sidebar.js' %}"></script>
+</head>
+<body>
+    {% include 'sidebar.html' %}
+    <div class="listing-detail">
+        <h1>{{ listing.listingname }}</h1>
+        <img src="{{ listing.listingimage.url }}" alt="{{ listing.listingname }}">
+        <p>{{ listing.description }}</p>
+        <p>{{ listing.price }} {{ listing.currency }}</p>
+    </div>
+</body>
+</html>

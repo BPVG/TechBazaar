@@ -18,4 +18,5 @@ class Listing(models.Model):
   description = models.TextField(max_length=2000, default="Nav apraksta")
   listingimage = models.ImageField(upload_to='images/', validators=[validate_image], default='images/default.png')
   price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+  currency = models.CharField(max_length=255, default="EUR")
   statuscompleted = models.BooleanField(default=False)

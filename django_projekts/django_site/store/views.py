@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Listing
+from .listing_detail import ListingDetailView
 
 def store(request):
     object_list = Listing.objects.filter(statuscompleted = False)
