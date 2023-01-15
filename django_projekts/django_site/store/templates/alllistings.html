@@ -10,10 +10,12 @@
   <div class="grid-container">
     {% for object in object_list %}
         <div class="grid-cell">
-          <a href="{% url 'listing_detail' listing.pk %}">
-            <img src="{{ listing.listingimage.url }}" alt="{{ listing.listingname }}" class="image">
-            <p>{{ listing.listingname }}</p>
-            <p>{{ listing.price }}</p>
+          <a href="{% url 'store:listing_detail' object.pk %}">
+            <div class="grid-cell">
+                <img src="{{ object.listingimage.url }}" alt="{{ object.listingname }}" class="image">
+                <p>{{ object.listingname }}</p>
+                <p>{{ object.price }}</p>
+            </div>
         </a>
         </div>
     {% endfor %}

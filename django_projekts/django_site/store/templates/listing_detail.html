@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,11 +7,10 @@
 </head>
 <body>
     {% include 'sidebar.html' %}
-    <div class="listing-detail">
-        <h1>{{ listing.listingname }}</h1>
-        <img src="{{ listing.listingimage.url }}" alt="{{ listing.listingname }}">
-        <p>{{ listing.description }}</p>
-        <p>{{ listing.price }} {{ listing.currency }}</p>
-    </div>
+    <h1>{{ object.listingname }}</h1>
+    <img src="{{ object.listingimage.url }}" alt="{{ object.listingname }}">
+    <p>{{ object.description }}</p>
+    <p>{{ object.price }} {{ object.currency }}</p>
+
 </body>
 </html>
