@@ -1,0 +1,14 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block breadcrumbs %}<div class="breadcrumbs"><a href="{% url 'admin:index' %}">{% translate 'Galvenā lapa' %}</a></div>{% endblock %}
+
+{% block nav-sidebar %}{% endblock %}
+
+{% block content %}
+
+<p>{% translate "Paldies par lietošanu" %}</p>
+
+<p><a href="{% url 'admin:index' %}">{% translate 'Ielogoties vēlreiz' %}</a></p>
+
+{% endblock %}
