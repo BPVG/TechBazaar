@@ -11,26 +11,26 @@
     <div>
         <form method="post" enctype="multipart/form-data" action="{% url 'store:create_listing' %}">
             {% csrf_token %}
-            <label for="listingname">Listing Name:</label>
+            <label for="listingname">Nosaukums:</label>
             <input type="text" id="listingname" name="listingname" required>
             <br>
-            <label for="description">Description:</label>
+            <label for="description">Apraksts:</label>
             <textarea id="description" name="description" rows="5" required></textarea>
             <br>
-            <label for="listingimage">Listing Image:</label>
+            <label for="listingimage">Attēls:</label>
             <input type="file" id="listingimage" name="listingimage" accept="image/*" required>
             <br>
-            <label for="price">Price:</label>
+            <label for="price">Cena:</label>
             <input type="number" id="price" name="price" min="0" step="0.01" required>
             <br>
-            <label for="currency">Currency:</label>
+            <label for="currency">Valūta:</label>
             <select id="currency" name="currency" required>
                 <option value="USD">USD</option>
                 <option value="EUR">EUR</option>
                 <option value="GBP">GBP</option>
             </select>
             <br>
-            <input type="submit" value="Create Listing">
+            <input type="submit" value="Izveidot sludinājumu">
         </form>
       </div>
 </body>
