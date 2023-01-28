@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Register</h1>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <label for="profile_picture">Profile Picture:</label>
+    <input type="file" name="profile_picture" accept="image/*">
+    <input type="submit" value="Register">
+  </form>
+{% endblock %}

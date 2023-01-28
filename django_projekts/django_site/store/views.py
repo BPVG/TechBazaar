@@ -5,6 +5,8 @@ from .forms import ListingForm
 from django.urls import reverse
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
+from django import forms
+from django.contrib.auth.models import User
 
 class ListingDetailView(DetailView):
     model = Listing
@@ -12,7 +14,7 @@ class ListingDetailView(DetailView):
 
 def store(request):
     object_list = Listing.objects.filter(statuscompleted = False)
-    return render(request, 'alllistings.html', {'object_list': object_list})
+    return render(request, 'store.html', {'object_list': object_list})
 
 def create_listing(request):
     form = ListingForm()
@@ -33,3 +35,17 @@ class ListingCreateView(CreateView):
     fields = ['listingname', 'description', 'listingimage', 'price','currency']
     template_name = 'listing_form.html'
     success_url = reverse_lazy('store')
+
+class RegisterForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput())
+    confirm_password = forms.CharField(widget=forms.PasswordInput())
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'password', 'confirm_password']
+
+def clean_confirm_password(self):
+        password = self.cleaned_data.get('password')
+        confirm_password = self.cleaned_data.get('confirm_password')
+        if password != confirm_password:
+            raise forms.ValidationError("Passwords do not match")
+        return confirm_password
