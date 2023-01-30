@@ -4,9 +4,26 @@
   <h1>Register</h1>
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}
-    <label for="profile_picture">Profile Picture:</label>
-    <input type="file" name="profile_picture" accept="image/*">
+    <div>
+      <label for="{{ form.username.id_for_label }}">Lietotājvārds:</label>
+      {{ form.username }}
+    </div>
+    <div>
+      <label for="{{ form.email.id_for_label }}">E-pasts:</label>
+      {{ form.email }}
+    </div>
+    <div>
+      <label for="{{ form.password1.id_for_label }}">Parole:</label>
+      {{ form.password1 }}
+    </div>
+    <div>
+      <label for="{{ form.password2.id_for_label }}">Paroles pārbaude:</label>
+      {{ form.password2 }}
+    </div>
+    <div>
+      <label for="profile_picture">Profila Bilde:</label>
+      <input type="file" name="profile_picture" accept="image/*">
+    </div>
     <input type="submit" value="Register">
   </form>
 {% endblock %}
