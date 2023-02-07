@@ -14,7 +14,7 @@ class ListingDetailView(DetailView):
     template_name = 'listing_detail.html'
 
 def store(request):
-    object_list = Listing.objects.filter(statuscompleted = False)
+    object_list = Listing.objects.filter(statuscompleted=False)
     return render(request, 'store.html', {'object_list': object_list})
 
 @login_required
@@ -24,9 +24,9 @@ def create_listing(request):
         if form.is_valid():
             listing = form.save(commit=False)
             user_current = request.user
-            listinguser = user_current.username
+            listing.listinguser = user_current
             listing.save()
-            return redirect('store')
+            return redirect('store:store')
     else:
         form = ListingForm()
     return render(request, 'create_listing.html', {'form': form})
@@ -37,16 +37,6 @@ class ListingCreateView(CreateView):
     template_name = 'listing_form.html'
     success_url = reverse_lazy('store')
 
-class RegisterForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput())
-    confirm_password = forms.CharField(widget=forms.PasswordInput())
-    class Meta:
-        model = User
-        fields = ['username', 'email', 'password', 'confirm_password']
-
-def clean_confirm_password(self):
-        password = self.cleaned_data.get('password')
-        confirm_password = self.cleaned_data.get('confirm_password')
-        if password != confirm_password:
-            raise forms.ValidationError("Passwords do not match")
-        return confirm_password
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
