@@ -23,9 +23,7 @@ def create_listing(request):
         form = ListingForm(request.POST, request.FILES)
         if form.is_valid():
             listing = form.save(commit=False)
-            listing.listinguser_id = request.user.id
-            username_temp = User.objects.get(listing.listinguser_id)
-            listing.listinguser = username_temp.username
+            listing.listinguser = request.user.id
             listing.save()
             return redirect('store')
     else:

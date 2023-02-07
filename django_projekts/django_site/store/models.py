@@ -12,7 +12,6 @@ def validate_image(image):
 
 class Listing(models.Model):
     listinguser = models.CharField(max_length=2000)
-    listinguser_id = models.IntegerField()
     listingname = models.CharField(max_length=255)
     description = models.TextField(max_length=2000, default="Nav apraksta")
     listingimage = models.ImageField(upload_to='images/', validators=[validate_image], default='images/default.png')
