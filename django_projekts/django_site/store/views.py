@@ -7,7 +7,6 @@ from django.views.generic import CreateView
 from django.urls import reverse_lazy
 from django import forms
 from django.contrib.auth.models import User
-from django.contrib.auth.decorators import login_required
 
 class ListingDetailView(DetailView):
     model = Listing
@@ -17,15 +16,16 @@ def store(request):
     object_list = Listing.objects.filter(statuscompleted = False)
     return render(request, 'store.html', {'object_list': object_list})
 
-@login_required
+def create_listing(request):
+    form = ListingForm()
+    return render(request, 'create_listing.html', {'form': form})
+
 def create_listing(request):
     if request.method == 'POST':
         form = ListingForm(request.POST, request.FILES)
         if form.is_valid():
-            listing = form.save(commit=False)
-            listing.listinguser = request.user.id
-            listing.save()
-            return redirect('store')
+            form.save()
+            return redirect(reverse('store:store'))
     else:
         form = ListingForm()
     return render(request, 'create_listing.html', {'form': form})
