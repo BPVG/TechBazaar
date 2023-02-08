@@ -8,6 +8,7 @@ from django.urls import reverse_lazy
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login, logout
 
 class ListingDetailView(DetailView):
     model = Listing
@@ -52,3 +53,21 @@ class ListingCreateView(CreateView):
     fields = ['listingname', 'description', 'listingimage', 'price','currency']
     template_name = 'listing_form.html'
     success_url = reverse_lazy('store')
+
+def login_view(request):
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+        user = authenticate(request, username=username, password=password)
+        if user is None:
+            context = {"error": "invalid username or password"}
+            return render(request, 'registration/login.html', context)
+        login(request, user)
+        return redirect("store:store")
+    return render(request, 'registration/login.html', {})
+
+def logout_view(request):
+    if request.method == 'POST':
+        logout(request)
+        return redirect('/login/')
+    return render(request, 'registration/logout.html', {})

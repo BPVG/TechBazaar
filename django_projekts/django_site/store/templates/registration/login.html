@@ -1,10 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+{% if not request.user.is_authenticated %}
   <h2>Pieslēgšanās</h2>
-  <form method="post">
+  <form method="POST">
+    {% if error %}
+      <p style="color:red">{{ error }}</p>
+    {% endif %}
     {% csrf_token %}
-    {{ form.as_p }}
+    <div>
+      <label>username</label>
+      <input type='text' name='username'>
+    </div>
+    <div>
+      <label>password</label>
+      <input type='password' name='password'>
+    </div>
     <button type="submit">Pieslēgties</button>
   </form>
+  {% else %}
+  <p>Already logged in, wanna log out? <a href="/logout/">logout</a></p>
+  {% endif %}
 {% endblock %}
