@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Listing
 from django.views.generic import DetailView
-from .forms import ListingForm
+from .forms import ListingForm, RegisterForm
 from django.urls import reverse
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
@@ -31,12 +31,24 @@ def create_listing(request):
         form = ListingForm()
     return render(request, 'create_listing.html', {'form': form})
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+def register(request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            # process the form data and save it to the database
+            user = form.save()
+            # redirect the user to a successful registration page
+            return redirect('store:store')
+    else:
+        form = RegisterForm()
+    return render(request, 'register.html', {'form': form})
+
 class ListingCreateView(CreateView):
     model = Listing
     fields = ['listingname', 'description', 'listingimage', 'price','currency']
     template_name = 'listing_form.html'
     success_url = reverse_lazy('store')
-
-    def form_valid(self, form):
-        form.instance.user = self.request.user
-        return super().form_valid(form)
