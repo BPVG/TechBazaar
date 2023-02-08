@@ -2,28 +2,20 @@
 
 {% block content %}
   <h1>Reģistrācija</h1>
-  <form method="post" enctype="multipart/form-data">
+  <form method="post" enctype="multipart/form-data" action="{% url 'store:create_listing' %}">
     {% csrf_token %}
-    <div>
-      <label for="{{ form.username.id_for_label }}">Lietotājvārds:</label>
-      {{ form.username }}
-    </div>
-    <div>
-      <label for="{{ form.email.id_for_label }}">E-pasts:</label>
-      {{ form.email }}
-    </div>
-    <div>
-      <label for="{{ form.password1.id_for_label }}">Parole:</label>
-      {{ form.password1 }}
-    </div>
-    <div>
-      <label for="{{ form.password2.id_for_label }}">Paroles pārbaude:</label>
-      {{ form.password2 }}
-    </div>
-    <div>
-      <label for="profile_picture">Profila Bilde:</label>
-      <input type="file" name="profile_picture" accept="image/*">
-    </div>
+    <label for="username">Lietotājvārds:</label>
+    <input type="text" id="username" name="username" required>
+    <br>
+    <label for="email">E-pasts:</label>
+    <input type="email" id="email" name="email">
+    <br>
+    <label for="password">Parole:</label>
+    <input type="password" id="password" name="password">
+    <br>
+    <label for="profile_picture">Attēls:</label>
+    <input type="file" id="profile_picture" name="profile_picture" accept="image/*" required>          
+    <br>
     <input type="submit" value="Reģistrēties">
   </form>
 {% endblock %}
