@@ -32,17 +32,11 @@ def create_listing(request):
         form = ListingForm()
     return render(request, 'create_listing.html', {'form': form})
 
-    def form_valid(self, form):
-        form.instance.user = self.request.user
-        return super().form_valid(form)
-
 def register(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
-            # process the form data and save it to the database
             user = form.save()
-            # redirect the user to a successful registration page
             return redirect('store:store')
     else:
         form = RegisterForm()
