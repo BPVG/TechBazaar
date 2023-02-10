@@ -5,10 +5,10 @@
 {% if request.user.is_authenticated %}
   <h2>Pieslēgšanās</h2>
   <form method="POST"> {% csrf_token %}
-    <p>Logout?</p>
-    <button type="submit">logout</button>
+    <p>Vēlaties iziet no profila?</p>
+    <button type="submit">Atslēgties</button>
   </form>
   {% else %}
-  <p>Not logged in, wanna get in? <a href="/login/">login</a></p>
+  <p>Vēlaties ieiet profilā? <a href="/login/">Pieslēgties</a></p>
   {% endif %}
 {% endblock %}

@@ -10,4 +10,4 @@ class ListingForm(forms.ModelForm):
 class RegisterForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['username', 'email', 'password']
+        fields = ['username', 'password']

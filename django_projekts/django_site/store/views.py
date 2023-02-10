@@ -81,3 +81,7 @@ def SearchListingView(request):
     else:
         results = []
     return render(request, 'store.html', {'results': results})
+
+def MyListingView(request):
+    object_list = Listing.objects.filter(listinguser=request.user)
+    return render(request, 'my_listings.html', {'object_list': object_list})

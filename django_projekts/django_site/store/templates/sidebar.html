@@ -10,9 +10,8 @@
     <div id="sidebar" class="sidebar">
         <a href="#" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="{% url 'store:create_listing' %}">Izveidot sludinājumu</a>
-        <a href="#">Paziņojumi</a>
         <a href="{% url 'store:store' %}">Visi sludinājumi</a>
-        <a href="#">Mani sludinājumi</a>
+        <a href="{% url 'store:my_listings' %}">Mani sludinājumi</a>
       </div>
       
       <div id="main">

@@ -10,16 +10,16 @@
     {% endif %}
     {% csrf_token %}
     <div>
-      <label>username</label>
+      <label>Lietotājvārds: </label>
       <input type='text' name='username'>
     </div>
     <div>
-      <label>password</label>
+      <label>Parole: </label>
       <input type='password' name='password'>
     </div>
     <button type="submit">Pieslēgties</button>
   </form>
   {% else %}
-  <p>Already logged in, wanna log out? <a href="/logout/">logout</a></p>
+  <p>Jau esat pieslēgušies, vēlaties atslēgties? <a href="/logout/">Atslēgties</a></p>
   {% endif %}
 {% endblock %}

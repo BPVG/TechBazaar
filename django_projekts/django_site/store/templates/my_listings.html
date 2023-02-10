@@ -1,21 +1,17 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load static %}
 
 {% block content %}
-
 <!DOCTYPE html>
 <html>
 <head>
-  <style>@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');</style>
-  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
-  <script src="{% static 'js/sidebar.js' %}"></script>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');</style>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <script src="{% static 'js/sidebar.js' %}"></script>
 </head>
-<body class="main">
-  {% include 'sidebar.html' %}
-  <form action="" method="get">
-    <input type="text" name="q" placeholder="Meklēt sludinājumus" value="{{ request.GET.q }}">
-    <button type="submit">Meklēt</button>
-  </form>
+{% include 'sidebar.html' %}
+  <h1>Mani sludinājumi</h1>
+  {% if request.user.is_authenticated %}
   <div class="grid-container">
     {% if object_list %}
       {% for object in object_list %}
@@ -30,9 +26,11 @@
         </div>
       {% endfor %}
     {% else %}
-      <p>Nav sludinājumu, kas atbilstu jūsu meklētajam</p>
+    <form action="{% url 'store:create_listing' %}" method="get">
+    <input type="submit" value="Izveidot savu pirmo sludinājumu">
+    </form>
     {% endif %}
-  </div>
-</body>
-</html>
+    {% else %}
+    <p>Vēlaties ieiet profilā? <a href="/login/">Pieslēgties</a></p>
+    {% endif %}
 {% endblock %}
