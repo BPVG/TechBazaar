@@ -2,8 +2,7 @@ from django.urls import path, include
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import ListingDetailView
-from .views import ListingCreateView
+from .views import ListingDetailView, ListingCreateView, SearchListingView
 
 app_name = 'store'
 urlpatterns = [

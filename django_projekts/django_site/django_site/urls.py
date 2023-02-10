@@ -19,7 +19,7 @@ from django.contrib.auth import views as auth_views
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
-from store.views import login_view, logout_view
+from store.views import login_view, logout_view, SearchListingView
 
 
 class RegisterView(generic.CreateView):
@@ -33,4 +33,5 @@ urlpatterns = [
     path('login/', login_view, name='login'),
     path('logout/', logout_view, name='logout'),
     path('register/', RegisterView.as_view(), name='register'),
+    path('search/', SearchListingView, name='search_listing')
 ]

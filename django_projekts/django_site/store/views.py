@@ -9,13 +9,21 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
+from django.db.models import Q
 
 class ListingDetailView(DetailView):
     model = Listing
     template_name = 'listing_detail.html'
 
 def store(request):
-    object_list = Listing.objects.filter(statuscompleted=False)
+    object_list = Listing.objects.all()
+    query = request.GET.get("q")
+    if query:
+        object_list = object_list.filter(
+            Q(listingname__icontains=query) | 
+            Q(description__icontains=query)
+        )
+    object_list = object_list.filter(statuscompleted=False)
     return render(request, 'store.html', {'object_list': object_list})
 
 @login_required
@@ -65,3 +73,11 @@ def logout_view(request):
         logout(request)
         return redirect('/login/')
     return render(request, 'registration/logout.html', {})
+
+def SearchListingView(request):
+    query = request.GET.get('q')
+    if query:
+        results = Listing.objects.filter(listingname__icontains=query)
+    else:
+        results = []
+    return render(request, 'store.html', {'results': results})
