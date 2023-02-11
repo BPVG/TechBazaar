@@ -8,6 +8,7 @@
     <p>Vēlaties iziet no profila?</p>
     <button type="submit">Atslēgties</button>
   </form>
+  <p>Vēlaties nomainīt paroli? <a href="{% url 'password_change' %}">Mainīt paroli {}</a></p>
   {% else %}
   <p>Vēlaties ieiet profilā? <a href="/login/">Pieslēgties</a></p>
   {% endif %}
