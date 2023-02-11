@@ -38,5 +38,4 @@ urlpatterns = [
     path('logout/', logout_view, name='logout'),
     path('register/', RegisterView.as_view(), name='register'),
     path('search/', SearchListingView, name='search_listing'),
-    path('rosetta/', include('rosetta.urls')),
 ]
