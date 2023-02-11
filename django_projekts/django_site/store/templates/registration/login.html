@@ -3,23 +3,23 @@
 {% block content %}
 
 {% if not request.user.is_authenticated %}
-  <h2>Pieslēgšanās</h2>
+  <h2>Log in</h2>
   <form method="POST">
     {% if error %}
       <p style="color:red">{{ error }}</p>
     {% endif %}
     {% csrf_token %}
     <div>
-      <label>Lietotājvārds: </label>
+      <label>Username: </label>
       <input type='text' name='username'>
     </div>
     <div>
-      <label>Parole: </label>
+      <label>Password: </label>
       <input type='password' name='password'>
     </div>
-    <button type="submit">Pieslēgties</button>
+    <button type="submit">Log in</button>
   </form>
   {% else %}
-  <p>Jau esat pieslēgušies, vēlaties atslēgties? <a href="/logout/">Atslēgties</a></p>
+  <p>You're already logged in, do you want to log out? <a href="/logout/">Log out</a></p>
   {% endif %}
 {% endblock %}

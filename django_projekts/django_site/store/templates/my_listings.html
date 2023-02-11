@@ -10,7 +10,7 @@
     <script src="{% static 'js/sidebar.js' %}"></script>
 </head>
 {% include 'sidebar.html' %}
-  <h1>Mani sludinājumi</h1>
+  <h1>My listings</h1>
   {% if request.user.is_authenticated %}
   <div class="grid-container">
     {% if object_list %}
@@ -23,14 +23,15 @@
                 <p>{{ object.price }}{{object.currency}}</p>
             </div>
           </a>
+          <a href="{% url 'store:edit_listing' object.pk %}">Mainīt</a>
         </div>
       {% endfor %}
     {% else %}
     <form action="{% url 'store:create_listing' %}" method="get">
-    <input type="submit" value="Izveidot savu pirmo sludinājumu">
+    <input type="submit" value="Create your 1st listing">
     </form>
     {% endif %}
     {% else %}
-    <p>Vēlaties ieiet profilā? <a href="/login/">Pieslēgties</a></p>
+    <p>To view your listings, you must be logged in. <a href="/login/">Log in</a></p>
     {% endif %}
 {% endblock %}

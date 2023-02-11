@@ -13,8 +13,8 @@
 <body class="main">
   {% include 'sidebar.html' %}
   <form action="" method="get">
-    <input type="text" name="q" placeholder="Meklēt sludinājumus" value="{{ request.GET.q }}">
-    <button type="submit">Meklēt</button>
+    <input type="text" name="q" placeholder="Search for listings" value="{{ request.GET.q }}">
+    <button type="submit">Search</button>
   </form>
   <div class="grid-container">
     {% if object_list %}
@@ -30,7 +30,7 @@
         </div>
       {% endfor %}
     {% else %}
-      <p>Nav sludinājumu, kas atbilstu jūsu meklētajam</p>
+      <p>No listings match your search</p>
     {% endif %}
   </div>
 </body>

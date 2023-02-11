@@ -1,14 +1,14 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Listing
 from django.views.generic import DetailView
-from .forms import ListingForm, RegisterForm
+from .forms import ListingForm, RegisterForm, ListingEditForm
 from django.urls import reverse
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.db.models import Q
 
 class ListingDetailView(DetailView):
@@ -85,3 +85,31 @@ def SearchListingView(request):
 def MyListingView(request):
     object_list = Listing.objects.filter(listinguser=request.user)
     return render(request, 'my_listings.html', {'object_list': object_list})
+
+@login_required
+def password_change(request):
+    if request.method == 'POST':
+        current_password = request.POST.get('old_password')
+        new_password = request.POST.get('new_password1')
+        confirm_password = request.POST.get('new_password2')
+        if not request.user.check_password(current_password):
+            return render(request, 'registration/password_change.html', {'error_message': 'Old password is incorrect'})
+        if new_password != confirm_password:
+            return render(request, 'registration/password_change.html', {'error_message': 'New password does not match'})
+        request.user.set_password(new_password)
+        request.user.save()
+        update_session_auth_hash(request, request.user)
+        return redirect('password_change_done')
+
+    return render(request, 'registration/password_change.html')
+
+def edit_listing(request, pk):
+    listing = get_object_or_404(Listing, pk=pk)
+    if request.method == 'POST':
+        form = ListingEditForm(request.POST, instance=listing)
+        if form.is_valid():
+            form.save()
+            return redirect('store:my_listings')
+    else:
+        form = ListingEditForm(instance=listing)
+    return render(request, 'edit_listing.html', {'form': form})
