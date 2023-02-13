@@ -18,7 +18,7 @@
     z-index: 1;
     top: 0;
     left: 0;
-    background-image: url("sidebarbg.png");
+    background-image: url("img/sidebarbg.png");
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
@@ -74,6 +74,12 @@
 .grid-cell {
   font-size: 24px;
 }
+
+* { 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
+ }
 
 img {
   border-radius: 20px;

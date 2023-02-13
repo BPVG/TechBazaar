@@ -17,6 +17,11 @@
         <a href="{% url 'login' %}">Log in</a>
         <a href="{% url 'register' %}">Register</a>
       {% endif %}
+      <form action="" method="get">
+        <input type="text" name="q" placeholder="Search for listings" value="{{ request.GET.q }}" class="sbar">
+        <button type="submit" class="search">Search</button>
+      </form>
+      <!-- <img class="logo"> -->
     </nav>
   </header>
   <main>

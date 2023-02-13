@@ -12,10 +12,6 @@
 </head>
 <body class="main">
   {% include 'sidebar.html' %}
-  <form action="" method="get">
-    <input type="text" name="q" placeholder="Search for listings" value="{{ request.GET.q }}">
-    <button type="submit">Search</button>
-  </form>
   <div class="grid-container">
     {% if object_list %}
       {% for object in object_list %}
@@ -23,8 +19,10 @@
           <a href="{% url 'store:listing_detail' object.pk %}">
             <div class="grid-cell">
                 <img src="{{ object.listingimage.url }}" alt="{{ object.listingname }}" class="image">
-                <p>{{ object.listingname }}</p>
-                <p>{{ object.price }}{{object.currency}}</p>
+                <div class="sub">
+                  <p>{{ object.listingname }}</p>
+                  <p>{{ object.price }}{{object.currency}}</p>
+                </div>
             </div>
           </a>
         </div>
