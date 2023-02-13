@@ -1,12 +1,15 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
+  <style>@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');</style>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}">
   <title>Listings</title>
 </head>
 <body>
   <title>Listings</title>
   <header>
-    <nav>
+    <nav class="topnav">
       <a href="{% url 'store:store' %}">Home</a>
       {% if user.is_authenticated %}
         <a href="{% url 'logout' %}">Log out</a>
@@ -19,8 +22,5 @@
   <main>
     {% block content %}{% endblock %}
   </main>
-  <footer>
-    <p>Copyright (c) 2022</p>
-  </footer>
 </body>
 </html>
