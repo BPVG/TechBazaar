@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <style>@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');</style>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+  <script src="{% static 'js/sidebar.js' %}"></script>
+</head>
+<body class="main">
+  {% include 'sidebar.html' %}
+  <div class="grid-container">
+    {% if object_list %}
+      {% for object in object_list %}
+        <div class="grid-cell">
+          <a href="{% url 'store:listing_detail' object.pk %}">
+            <div class="grid-cell">
+                <img src="{{ object.listingimage.url }}" alt="{{ object.listingname }}" class="image">
+                <div class="sub">
+                  <p>{{ object.listingname }}</p>
+                  <p>{{ object.price }}{{object.currency}}</p>
+                </div>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>No listings match your search</p>
+    {% endif %}
+  </div>
+</body>
+</html>
+{% endblock %}
