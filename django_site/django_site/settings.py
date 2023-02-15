@@ -24,10 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-d3swfrg@8a__e+u57su-hrt#6q67-e#ek$q=1!ef$z1#&*7n(='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
-CSRF_TRUSTED_ORIGINS = ['https://techbazaar-production.up.railway.app/']
+ALLOWED_HOSTS = ['*']
+if not DEBUG:
+    CSRF_TRUSTED_ORIGINS = ['techbazaar.up.railway.app']
 
 # Application definition
 
