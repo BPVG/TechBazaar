@@ -48,7 +48,7 @@ def register(request):
             return redirect('store:store')
     else:
         form = RegisterForm()
-    return render(request, 'register.html', {'form': form})
+    return render(request, 'registration/register.html', {'form': form})
 
 class ListingCreateView(CreateView):
     model = Listing
