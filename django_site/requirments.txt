@@ -1,0 +1,17 @@
+asgiref==3.6.0
+astroid==2.4.2
+backports.zoneinfo==0.2.1
+colorama==0.4.3
+Django==4.1.5
+gunicorn==20.1.0
+isort==4.3.21
+lazy-object-proxy==1.4.3
+mccabe==0.6.1
+Pillow==9.4.0
+pylint==2.5.3
+six==1.15.0
+sqlparse==0.4.3
+tk==0.1.0
+toml==0.10.1
+tzdata==2022.7
+wrapt==1.12.1
