@@ -56,7 +56,7 @@ class ListingCreateView(CreateView):
     template_name = 'listing_form.html'
     success_url = reverse_lazy('store')
 
-def login_view_custom(request):
+def login_view(request):
     if request.method == "POST":
         username = request.POST.get("username")
         password = request.POST.get("password")
