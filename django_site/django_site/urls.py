@@ -32,6 +32,7 @@ urlpatterns = [
     path('', include('store.urls')),
     path('admin/', admin.site.urls),
     path('login/', login_view_custom, name='login'),
+    path('accounts/login/', login_view_custom, name='login_reg'),
     path('change_password/', password_change, name='password_change'),
     path('logout/change_password/', password_change, name='change_password'),
     path('change_password_done/', auth_views.PasswordChangeDoneView.as_view(template_name='registration/password_change_done.html'), name='password_change_done'),
