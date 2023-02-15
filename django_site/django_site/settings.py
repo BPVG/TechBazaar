@@ -27,7 +27,6 @@ SECRET_KEY = 'django-insecure-d3swfrg@8a__e+u57su-hrt#6q67-e#ek$q=1!ef$z1#&*7n(=
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['https://techbazaar.up.railway.app']
 
 # Application definition
 
@@ -54,6 +53,7 @@ MIDDLEWARE = [
     "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
+CSRF_TRUSTED_ORIGINS = ['https://techbazaar.up.railway.app']
 ROOT_URLCONF = 'django_site.urls'
 
 TEMPLATES = [
