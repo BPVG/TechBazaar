@@ -28,10 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 <<<<<<< HEAD:django_site/django_site/settings.py
-<<<<<<< HEAD:django_site/django_site/settings.py
 =======
-=======
->>>>>>> parent of 2fc621c1 (about to host):django_projekts/django_site/django_site/settings.py
 
 >>>>>>> parent of 2fc621c1 (about to host):django_projekts/django_site/django_site/settings.py
 
@@ -149,10 +146,7 @@ STATICFILES_FINDERS = [
 ]
 <<<<<<< HEAD:django_site/django_site/settings.py
 <<<<<<< HEAD:django_site/django_site/settings.py
-<<<<<<< HEAD:django_site/django_site/settings.py
 STATIC_ROOT =os.path.join(BASE_DIR, 'staticfiles')
-=======
->>>>>>> parent of 2fc621c1 (about to host):django_projekts/django_site/django_site/settings.py
 =======
 >>>>>>> parent of 2fc621c1 (about to host):django_projekts/django_site/django_site/settings.py
 =======
