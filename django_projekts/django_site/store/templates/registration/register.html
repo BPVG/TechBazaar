@@ -1,6 +1,15 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <style>@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');</style>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/reg.css' %}">
+  <title>Register</title>
+</head>
+<body class="main">
   <h1>Register</h1>
   <form method="post" enctype="multipart/form-data" action="{% url 'store:create_listing' %}">
     {% csrf_token %}
@@ -12,4 +21,5 @@
     <br>
     <input type="submit" value="Register">
   </form>
+</body>
 {% endblock %}

@@ -1,25 +1,32 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
 
+<!DOCTYPE html>
+<html>
+<head>
+  <style>@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');</style>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/reg.css' %}">
+  <title>Register</title>
+</head>
+<body class="main">
 {% if not request.user.is_authenticated %}
-  <h2>Log in</h2>
-  <form method="POST">
+<h2>Login Page</h2><br>
+<div class="login">
+  <form id="login" method="POST">
     {% if error %}
-      <p style="color:red">{{ error }}</p>
+    <p style="color:red">{{ error }}</p>
     {% endif %}
     {% csrf_token %}
-    <div>
-      <label>Username: </label>
-      <input type='text' name='username'>
-    </div>
-    <div>
-      <label>Password: </label>
-      <input type='password' name='password'>
-    </div>
-    <button type="submit">Log in</button>
+    <label><b>Username:</b></label>
+    <input type="text" name="username" id="Uname"><br><br>
+    <label><b>Password:</b> </label>    
+    <input type="Password" name="password" id="Pass"><br><br>
+    <button type="sumbit" name="log" id="log" value="Log In Here">Log in</button><br><br>    
   </form>
   {% else %}
   <p>You're already logged in, do you want to log out? <a href="/logout/">Log out</a></p>
   {% endif %}
+</div>
+</body>
 {% endblock %}
