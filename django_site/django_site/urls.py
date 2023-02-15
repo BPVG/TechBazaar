@@ -19,7 +19,7 @@ from django.contrib.auth import views as auth_views
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
-from store.views import login_view, logout_view, SearchListingView, password_change
+from store.views import login_view, logout_view, SearchListingView, password_change, register
 
 
 
@@ -36,6 +36,6 @@ urlpatterns = [
     path('logout/change_password/', password_change, name='change_password'),
     path('change_password_done/', auth_views.PasswordChangeDoneView.as_view(template_name='registration/password_change_done.html'), name='password_change_done'),
     path('logout/', logout_view, name='logout'),
-    path('register/', RegisterView.as_view(), name='register'),
+    path('register/', register, name='register'),
     path('search/', SearchListingView, name='search_listing'),
 ]
