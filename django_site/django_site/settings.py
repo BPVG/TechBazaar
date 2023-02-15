@@ -27,6 +27,10 @@ SECRET_KEY = 'django-insecure-d3swfrg@8a__e+u57su-hrt#6q67-e#ek$q=1!ef$z1#&*7n(=
 DEBUG = True
 
 ALLOWED_HOSTS = []
+<<<<<<< HEAD:django_site/django_site/settings.py
+=======
+
+>>>>>>> parent of 2fc621c1 (about to host):django_projekts/django_site/django_site/settings.py
 
 # Application definition
 
@@ -140,7 +144,10 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
 <<<<<<< HEAD:django_site/django_site/settings.py
+<<<<<<< HEAD:django_site/django_site/settings.py
 STATIC_ROOT =os.path.join(BASE_DIR, 'staticfiles')
+=======
+>>>>>>> parent of 2fc621c1 (about to host):django_projekts/django_site/django_site/settings.py
 =======
 >>>>>>> parent of 2fc621c1 (about to host):django_projekts/django_site/django_site/settings.py
 
