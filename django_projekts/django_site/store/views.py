@@ -26,7 +26,6 @@ def store(request):
     object_list = object_list.filter(statuscompleted=False)
     return render(request, 'store.html', {'object_list': object_list})
 
-@login_required
 def create_listing(request):
     if request.method == 'POST':
         form = ListingForm(request.POST, request.FILES)

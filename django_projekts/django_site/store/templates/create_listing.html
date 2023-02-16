@@ -11,6 +11,7 @@
 <body class="main">
     {% include 'sidebar.html' %}
     <div>
+        {% if request.user.is_authenticated %}
         <form method="post" enctype="multipart/form-data" action="{% url 'store:create_listing' %}">
             {% csrf_token %}
             <label for="listingname">Name:</label>
@@ -34,6 +35,9 @@
             <br>
             <input type="submit" value="Create listing">
         </form>
+        {% else %}
+        <p>To create a listing you must be logged in. <a href="/login/">Log in</a></p>
+        {% endif %}
       </div>
 </body>
 </html>
