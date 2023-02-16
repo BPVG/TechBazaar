@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');</style>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <script src="{% static 'js/sidebar.js' %}"></script>
+</head>
+<body class="main">
+    {% include 'sidebar.html' %}
+    <h1>{{ object.listingname }}</h1>
+    <img src="{{ object.listingimage.url }}" alt="{{ object.listingname }}">
+    <p>{{ object.description }}</p>
+    <p>{{ object.price }} {{ object.currency }}</p>
+    <p>{{ object.listinguser }}</p>
+</body>
+</html>
+{% endblock %}
