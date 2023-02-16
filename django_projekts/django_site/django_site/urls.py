@@ -20,8 +20,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
 from store.views import login_view, logout_view, SearchListingView, password_change
-from django.conf import settings
-from django.conf.urls.static import static
 
 
 
