@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');</style>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/listing_detail.css' %}">
+    <script src="{% static 'js/sidebar.js' %}"></script>
+</head>
+<body class="main">
+    {% include 'sidebar.html' %}
+    <div class="row">
+        <div class="column title">
+            <h1>{{ object.listingname }}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column">
+            <img src="{{ object.listingimage.url }}" alt="{{ object.listingname }}">
+        </div>
+        <div class="column description">
+            <p>Description: {{ object.description }}</p>
+            <p>Price: {{ object.price }} {{ object.currency }}</p>
+            <p>Listing posted by: {{ object.listinguser }}</p>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}
