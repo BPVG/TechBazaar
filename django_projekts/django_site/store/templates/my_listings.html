@@ -23,7 +23,7 @@
                 <p>{{ object.price }}{{object.currency}}</p>
             </div>
           </a>
-          <a href="{% url 'store:edit_listing' object.pk %}">Mainīt</a>
+          <a href="{% url 'store:edit_listing' object.pk %}">Edit</a>
         </div>
       {% endfor %}
     {% else %}
