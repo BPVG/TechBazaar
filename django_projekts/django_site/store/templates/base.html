@@ -1,12 +1,25 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 <head>
+=======
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <style>@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');</style>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}">
+>>>>>>> parent of 5e961e8e (host)
   <title>Listings</title>
 </head>
 <body>
   <title>Listings</title>
   <header>
+<<<<<<< HEAD
     <nav>
+=======
+    <nav class="topnav">
+>>>>>>> parent of 5e961e8e (host)
       <a href="{% url 'store:store' %}">Home</a>
       {% if user.is_authenticated %}
         <a href="{% url 'logout' %}">Log out</a>
@@ -14,13 +27,24 @@
         <a href="{% url 'login' %}">Log in</a>
         <a href="{% url 'register' %}">Register</a>
       {% endif %}
+<<<<<<< HEAD
+=======
+      <form action="" method="get">
+        <input type="text" name="q" placeholder="Search for listings" value="{{ request.GET.q }}" class="sbar">
+        <button type="submit" class="search">Search</button>
+      </form>
+      <!-- <img class="logo"> -->
+>>>>>>> parent of 5e961e8e (host)
     </nav>
   </header>
   <main>
     {% block content %}{% endblock %}
   </main>
+<<<<<<< HEAD
   <footer>
     <p>Copyright (c) 2022</p>
   </footer>
+=======
+>>>>>>> parent of 5e961e8e (host)
 </body>
 </html>
