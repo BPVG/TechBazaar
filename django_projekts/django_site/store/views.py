@@ -10,6 +10,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.db.models import Q
+from django.contrib.auth.models import AnonymousUser
 
 class ListingDetailView(DetailView):
     model = Listing
@@ -43,11 +44,15 @@ def register(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            return redirect('store:store')
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = User.objects.create_user(username=username)
+            user.set_password(password)
+            user.save()
+            return redirect('login')
     else:
         form = RegisterForm()
-    return render(request, 'register.html', {'form': form})
+    return render(request, 'registration/register.html', {'form': form})
 
 class ListingCreateView(CreateView):
     model = Listing
@@ -60,11 +65,12 @@ def login_view(request):
         username = request.POST.get("username")
         password = request.POST.get("password")
         user = authenticate(request, username=username, password=password)
-        if user is None:
+        if user is not None and not isinstance(user, AnonymousUser):
+            login(request, user)
+            return redirect("store:store")
+        else:
             context = {"error": "invalid username or password"}
             return render(request, 'registration/login.html', context)
-        login(request, user)
-        return redirect("store:store")
     return render(request, 'registration/login.html', {})
 
 def logout_view(request):

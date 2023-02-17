@@ -11,14 +11,24 @@
 </head>
 <body class="main">
   <h1>Register</h1>
-  <form method="post" enctype="multipart/form-data" action="{% url 'store:create_listing' %}">
+  <form method="post" action="{% url 'register' %}">
     {% csrf_token %}
     <label for="username">Username:</label>
-    <input type="text" id="username" name="username" required>
+    <input type="text" id="username" name="username" value="{{ form.username.value }}" required>
     <br>
     <label for="password">Password:</label>
-    <input type="password" id="password" name="password">
+    <input type="password" id="password" name="password" required>
     <br>
+    {% if form.errors %}
+      <p style="color: red;">Please correct the errors below:</p>
+      <ul>
+      {% for field in form %}
+        {% for error in field.errors %}
+          <li>{{ field.label }}: {{ error }}</li>
+        {% endfor %}
+      {% endfor %}
+      </ul>
+    {% endif %}
     <input type="submit" value="Register">
   </form>
 </body>
