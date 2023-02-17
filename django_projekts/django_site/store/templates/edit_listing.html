@@ -2,7 +2,7 @@
 
 {% block content %}
   <h2>Update listing</h2>
-  <form method="post">
+  <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <p>
       <label for="{{ form.listingname.id_for_label }}">Name:</label>

@@ -11,6 +11,7 @@ class ListingEditForm(forms.ModelForm):
     class Meta:
         model = Listing
         fields = ['listingname', 'description', 'listingimage', 'price', 'currency', 'statuscompleted']
+
 class RegisterForm(forms.ModelForm):
     class Meta:
         model = User
