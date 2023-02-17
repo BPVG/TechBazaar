@@ -111,7 +111,7 @@ def password_change(request):
 def edit_listing(request, pk):
     listing = get_object_or_404(Listing, pk=pk)
     if request.method == 'POST':
-        form = ListingEditForm(request.POST, instance=listing)
+        form = ListingEditForm(request.POST, request.FILES, instance=listing)
         if form.is_valid():
             form.save()
             return redirect('store:my_listings')
