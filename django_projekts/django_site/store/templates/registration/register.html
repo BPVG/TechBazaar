@@ -10,26 +10,28 @@
   <title>Register</title>
 </head>
 <body class="main">
-  <h1>Register</h1>
-  <form method="post" action="{% url 'register' %}">
-    {% csrf_token %}
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username" value="{{ form.username.value }}" required>
-    <br>
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required>
-    <br>
-    {% if form.errors %}
-      <p style="color: red;">Please correct the errors below:</p>
-      <ul>
-      {% for field in form %}
-        {% for error in field.errors %}
-          <li>{{ field.label }}: {{ error }}</li>
+  <h2>Register</h2><br>
+  <div class="login">
+    <form id="login" method="post" action="{% url 'register' %}">
+      {% csrf_token %}
+      <label for="username"><b>Username:</b></label>
+      <input class="Uname" type="text" id="username" name="username" value="{{ form.username.value }}" required>
+      <br><br>
+      <label for="password"><b>Password:</b></label>
+      <input class="Pass" type="password" id="password" name="password" required>
+      <br><br>
+      {% if form.errors %}
+        <p style="color: red;">Please correct the errors below:</p>
+        <ul>
+        {% for field in form %}
+          {% for error in field.errors %}
+            <li>{{ field.label }}: {{ error }}</li>
+          {% endfor %}
         {% endfor %}
-      {% endfor %}
-      </ul>
-    {% endif %}
-    <input type="submit" value="Register">
-  </form>
+        </ul>
+      {% endif %}
+      <button type="sumbit" name="log" id="log" value="Register">Log in</button><br><br>
+    </form>
+  </div>
 </body>
 {% endblock %}

@@ -17,18 +17,15 @@
 }
 
 body  
-{  
-  margin: 0;  
-  padding: 0;  
+{   
   background-color:#6abadeba;
   font-family: 'Open Sans', sans-serif;
 }  
 
 .login{  
-  width: 382px;  
+  width: 340px;  
   overflow: hidden;  
   margin: 0 auto;
-  padding: 80px;  
   background: #627c99;  
   border-radius: 15px ;
   border: 3px solid #45586e;    
@@ -47,16 +44,33 @@ label{
   height: 30px;  
   border: none;  
   border-radius: 3px;  
-  padding-left: 8px;  
-}  
+  padding-left: 8px;
+}
+
+.Uname{  
+  width: 300px;  
+  height: 30px;  
+  border: none;  
+  border-radius: 3px;  
+  padding-left: 8px;
+}
+
 #Pass{  
   width: 300px;  
   height: 30px;  
   border: none;  
   border-radius: 3px;  
   padding-left: 8x;  
-      
 }  
+
+.Pass{  
+  width: 300px;  
+  height: 30px;  
+  border: none;  
+  border-radius: 3px;  
+  padding-left: 8x;  
+}  
+
 #log{  
   width: 300px;  
   height: 30px;  
@@ -64,4 +78,4 @@ label{
   border-radius: 17px;  
   padding-left: 7px;  
   color: blue;  
-}  
+}
