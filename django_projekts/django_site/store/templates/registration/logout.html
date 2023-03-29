@@ -1,15 +1,25 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
 
+<html>
+<head>
+  <style>@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');</style>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/reg.css' %}">
+</head>
+<body class="main">
 {% if request.user.is_authenticated %}
   <h2>Log out</h2>
+<div class="login">
   <form method="POST"> {% csrf_token %}
-    <p>Would you like log out?</p>
-    <button type="submit">Log out</button>
+    <label><b>Would you like log out?</b></label><br><br>
+    <button type="sumbit" name="log" id="log" value="Log out">Log out</button><br><br>
+    <label><b>Would you like to change your password? <a href="{% url 'password_change' %}">Change password</a></b></label><br><br>
+    {% else %}
+    <label><b>Wanna log in? <a href="/login/">Log in</a></b></label>
+    {% endif %}
   </form>
-  <p>Would you like to change your password? <a href="{% url 'password_change' %}">Change password</a></p>
-  {% else %}
-  <p>Wanna log in? <a href="/login/">Log in</a></p>
-  {% endif %}
 {% endblock %}
+</div>
+</body>
+</html>

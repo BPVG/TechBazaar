@@ -1,33 +1,50 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/create.css' %}">
+</head>
+
+<body class="main">
   <h2>Update listing</h2>
+  <div class="login">
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <p>
       <label for="{{ form.listingname.id_for_label }}">Name:</label>
       {{ form.listingname }}
     </p>
+    <br>
     <p>
       <label for="{{ form.description.id_for_label }}">Description:</label>
       {{ form.description }}
     </p>
+    <br>
     <p>
         <label for="{{ form.listingimage.id_for_label }}">Image:</label>
         {{ form.listingimage }}
     </p>
+    <br>
     <p>
       <label for="{{ form.price.id_for_label }}">Price:</label>
       {{ form.price }}
     </p>
+    <br>
     <p>
       <label for="{{ form.currency.id_for_label }}">Currency:</label>
       {{ form.currency }}
     </p>
+    <br>
     <p>
       <label for="{{ form.statuscompleted.id_for_label }}">Listing no longer available:</label>
       {{ form.statuscompleted }}
     </p>
-    <input type="submit" value="Submit changes">
+    <br>
+    <button type="sumbit" name="log" id="log" value="Submit changes">Submit changes</button><br><br>
+  </div>
   </form>
 {% endblock %}
+</body>
+</html>

@@ -5,39 +5,40 @@
 <html>
 <head>
     <style>@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');</style>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/create.css' %}">
     <script src="{% static 'js/sidebar.js' %}"></script>
 </head>
 <body class="main">
     {% include 'sidebar.html' %}
     <div>
+        <div class="login">
         {% if request.user.is_authenticated %}
         <form method="post" enctype="multipart/form-data" action="{% url 'store:create_listing' %}">
             {% csrf_token %}
             <label for="listingname">Name:</label>
-            <input type="text" id="listingname" name="listingname" required>
-            <br>
-            <label for="description">Description:</label>
-            <textarea id="description" name="description" rows="5" required></textarea>
+            <input class="Uname" type="text" id="listingname" name="listingname" required>
+            <br><br>
+            <label class="desc" for="description">Description:</label>
+            <textarea class="descTextArea" id="description" name="description" rows="5" required></textarea>
             <br>
             <label for="listingimage">Image:</label>
             <input type="file" id="listingimage" name="listingimage" accept="image/*" required>
-            <br>
+            <br><br>
             <label for="price">Price:</label>
-            <input type="number" id="price" name="price" min="0" step="0.01" required>
-            <br>
+            <input class="Uname" type="number" id="price" name="price" min="0" step="0.01" required>
+            <br><br>
             <label for="currency">Currency:</label>
-            <select id="currency" name="currency" required>
+            <select class="Uname" id="currency" name="currency" required>
                 <option value="USD">USD</option>
                 <option value="EUR">EUR</option>
                 <option value="GBP">GBP</option>
-            </select>
-            <br>
-            <input type="submit" value="Create listing">
+            </select><br><br>
+            <button type="sumbit" name="log" id="log" value="Create listing">Create listing</button><br><br>
         </form>
         {% else %}
         <p>To create a listing you must be logged in. <a href="/login/">Log in</a></p>
         {% endif %}
+        </div>
       </div>
 </body>
 </html>
